@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {useState} from 'react'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import styles from './index.css';
@@ -13,7 +14,6 @@ const Index = (props) => {
 
   const onOpenChange = (keys) => {
     const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
-    console.log(openKeys,keys,latestOpenKey,'key')
     latestOpenKey ? setOpenKeys([latestOpenKey]):setOpenKeys([])
   }
 
