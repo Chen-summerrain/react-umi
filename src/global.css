@@ -8,3 +8,8 @@ body {
 .ant-layout {
   height: 100%;
 }
+
+.ant-layout-sider {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
