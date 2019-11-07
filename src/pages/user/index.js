@@ -4,11 +4,6 @@ import {connect} from 'dva'
 import {Table} from 'antd'
 import Layout from '@/components/Layout'
 import User from './components/User'
-import api from '@/utils/request.js'
-
-// api('api/user').then(res=>{
-//     console.log(res,'res')
-// })
 
 const Index = ({dispatch,history,userinfo,list}) => {
     const [userList,setList] = useState(null)

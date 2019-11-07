@@ -9,17 +9,34 @@ import api from '@/utils/request.js'
 
 const Index = ({dispatch,history,userinfo,list,form}) => {
     const [data,setData] = useState({})
-    useEffect(()=>{
-        
-    },[data])
+    const [count,setCount] = useState(0)
+    const form_ref = useRef()
 
+    useEffect(()=>{
+        console.log(count,'count //shouldComponentUdate')
+    },[count])
+
+    useEffect(()=>{
+        console.log(count,'[] //componetDidMount')
+    },[])
+
+    useEffect(()=>{
+        console.log(count,'null //componentDidUpdate')
+    })
     const handleClick = () => {
-        console.log(data,'e===')
+        setCount(count+1)
+        // console.log(form_ref.current,'rrr')
+    }
+    const handleEvent = (e) => {
+        console.log(e,'dd')
     }
     return (
         <Layout>
+            <span>count{count}</span>
             <Button onClick={handleClick}>click</Button>
-            <FormTemp data={data} setData={setData}/>
+            <FormTemp 
+                ref={form_ref} 
+            />
         </Layout>
     )
 }

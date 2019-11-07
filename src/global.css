@@ -13,3 +13,12 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
 }
+.ant-btn {
+  margin-right: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.ant-card {
+  margin:20px 0 !important;
+}

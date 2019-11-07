@@ -1,29 +1,24 @@
 /* eslint-disable */
-import { useRef, useState, useEffect,forwardRef,useImperativeHandle,memo } from 'react'
+import { useRef, useState, useEffect,forwardRef,useImperativeHandle } from 'react'
 import {Form,Input} from 'antd'
 
-const FormTemp = ({form,ref}) => {
-    console.log(ref,'ref')
-    const _form = useRef()
+function FormTemp (props,ref) {
     const [data,setData] = useState({})
-    const { getFieldDecorator, resetFields, validateFieldsAndScroll } = form
-
+    const { getFieldDecorator, resetFields, validateFieldsAndScroll } = props.form
 
     useEffect(()=>{
         console.log('[],child')
     },[])
 
-    useEffect(()=>{
-        console.log('null,child')
-    })
-
     useImperativeHandle(ref, () => {
+        // handleSubmit()
         return {on:1}
     })
 
     const handleSubmit = () => {
         validateFieldsAndScroll((err,vals) => {
             console.log(err,vals,'vals')
+            setData({err,vals})
         })
     }
 
@@ -33,12 +28,8 @@ const FormTemp = ({form,ref}) => {
                 {
                     getFieldDecorator('name',{
                         initialValue:data.name,
-                        getValueFromEvent(e){
-                            setData({...data,name:e.target.value})
-                            return e.target.value
-                        },
                         rules:[
-                            {require:true,message:'name'}
+                            {required:true,message:'name'}
                         ]
                     })(<Input placeholder="name"/>)
                 }
@@ -47,12 +38,8 @@ const FormTemp = ({form,ref}) => {
                 {
                     getFieldDecorator('user',{
                         initialValue:data.user,
-                        getValueFromEvent(e){
-                            setData({...data,user:e.target.value})
-                            return e.target.value
-                        },
                         rules:[
-                            {require:true,message:'name'}
+                            {required:true,message:'user'}
                         ]
                     })(<Input placeholder="user"/>)
                 }
@@ -61,6 +48,6 @@ const FormTemp = ({form,ref}) => {
     )
 }
 
+FormTemp = forwardRef(FormTemp);
 const WrapForm  = Form.create({name:'form'})(FormTemp)
-export default forwardRef((props,ref)=><div ref={ref}><WrapForm {...props}/></div>)
-// export default memo(forwardRef(WrapForm))
+export default WrapForm
