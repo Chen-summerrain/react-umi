@@ -1,15 +1,20 @@
 /* eslint-disable */
-import {useState} from 'react'
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import React,{useState} from 'react'
+import { Layout, Menu, Icon } from 'antd';
+import Breadcrumb from '@/components/Breadcrumb'
+import PageLayout from '@/components/Layout'
 import styles from './index.css';
 import Link from 'umi/link'
+import {connect} from 'dva'
 import MenuList from '@/utils/menu.js'
+const ContextTemp= React.createContext({});
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 
 const Index = (props) => {
+  console.log(props,'layout--global')
   const [openKeys,setOpenKeys] = useState(['0'])
 
   const onOpenChange = (keys) => {
@@ -24,8 +29,6 @@ const Index = (props) => {
         <Sider width={200} style={{ background: '#fff' }}>
           <Menu
             mode="inline"
-            // defaultSelectedKeys={['1']}
-            // defaultOpenKeys={['sub1']}
             openKeys={openKeys}
             onOpenChange={onOpenChange}
             style={{ height: '100%', borderRight: 0 }}
@@ -60,6 +63,7 @@ const Index = (props) => {
           </Menu>
         </Sider>
         <Layout style={{ padding: '0 24px 24px' }}>
+          <Breadcrumb MenuList={MenuList}></Breadcrumb>
           <Content
             style={{
               background: '#fff',
@@ -68,7 +72,14 @@ const Index = (props) => {
               minHeight: 'auto',
             }}
           >
-            {props.children}
+            <ContextTemp.Provider
+              // value={data}
+            >   
+              <PageLayout context={ContextTemp}>
+                {props.children}
+              </PageLayout>
+            </ContextTemp.Provider>
+            
           </Content>
         </Layout>
       </Layout>
@@ -76,4 +87,10 @@ const Index = (props) => {
   )
 }
 
-export default Index;
+function mapStateToProps (state) {
+  return {
+      state,
+      a:1
+  }
+}
+export default connect(mapStateToProps)(Index)

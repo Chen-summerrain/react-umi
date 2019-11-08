@@ -3,15 +3,10 @@ import {Link} from 'umi'
 import {Button} from 'antd'
 import { Item } from 'rc-menu'
 const links = [
-    {name:'useMemo',to:'/hook/useMemo'},
-    {name:'selfHook',to:'/hook/selfHook'},
-    {name:'useCallback',to:'/hook/useCallback'},
-    {name:'useImperativeHandle',to:'/hook/useImperativeHandle?id=1'},
-    {name:'useImperativeHandle1',to:'/hook/useImperativeHandle1'},
+    {name:'动态路由',to:`/route/${1}`},
 ]
 export default () => (
     <div>
-        Hooks
         <div>
             {
                 links.map(link=>(

@@ -1,6 +1,6 @@
 const menuList = [
     {
-        title: 'menu0',
+        title: 'Home',
         icon:'zhihu',
         to: '/',
         key:'key0',
@@ -13,7 +13,11 @@ const menuList = [
         children: [
             { 
                 title: 'user',
-                to:'/user'
+                to:'/user',
+                children: [
+                    {title:'form',to:'/user/form'},
+                    {title:'userRef',to:'/user/user'},
+                ]
             },
             { 
                 title: 'createContext',
@@ -21,59 +25,20 @@ const menuList = [
             },
             { 
                 title: 'hook',
-                to:'/hook'
+                to:'/hook',
+                children: [
+                    {title:'selfHook',to:'/hook/selfHook'},
+                    {title:'useCallback',to:'/hook/useCallback'},
+                    {title:'useImperativeHanldle',to:'/hook/useImperativeHandle'},
+                    {title:'useMemo',to:'/hook/useMemo'},
+                ]
             },
             { 
-                title: 'item-4',
-                to:'user'
-            },
-        ]
-    },
-    {
-        title: 'menu2',
-        icon:'shopping',
-        to: null,
-        key:'key2',
-        children: [
-            { 
-                title: 'item-1',
-                to:'user'
-            },
-            { 
-                title: 'item-2',
-                to:'user'
-            },
-            { 
-                title: 'item-3',
-                to:'user'
-            },
-            { 
-                title: 'item-4',
-                to:'user'
-            },
-        ]
-    },
-    {
-        title: 'menu3',
-        icon:'shopping',
-        to: null,
-        key:'key3',
-        children: [
-            { 
-                title: 'item-1',
-                to:'user'
-            },
-            { 
-                title: 'item-2',
-                to:'user'
-            },
-            { 
-                title: 'item-3',
-                to:'user'
-            },
-            { 
-                title: 'item-4',
-                to:'user'
+                title: 'route',
+                to:'/route',
+                children:[
+                    {title:'动态路由',to:'/route/:id'}
+                ]
             },
         ]
     }

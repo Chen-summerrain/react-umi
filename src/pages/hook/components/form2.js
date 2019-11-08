@@ -6,9 +6,9 @@ function FormTemp (props,ref) {
     const [data,setData] = useState({})
     const { getFieldDecorator, resetFields, validateFieldsAndScroll } = props.form
 
-    useEffect(()=>{
-        console.log('[],child')
-    },[])
+    // useEffect(()=>{
+    //     console.log('[],child')
+    // },[])
 
     useImperativeHandle(ref, () => {
         // handleSubmit()
