@@ -30,13 +30,7 @@ export default withBreadcrumbs ([])((props)=>{
     const curRoute = breadcrumbs[len-1]||{}
     const findRoute = routes.find(r=> r.to === (route?route:curRoute.key))
     const title = findRoute && findRoute.title
-    useEffect (()=>{
-        console.log(findRoute,breadcrumbs,route,'finde')
-        if(!title) {
-            message.error('路由配置错误请检查')
-            // history.goBack()
-        }
-    },[])
+    
     return (
         <div>
             {
