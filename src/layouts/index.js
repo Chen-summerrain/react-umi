@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { Layout, Menu, Icon } from 'antd';
 import Breadcrumb from '@/components/Breadcrumb'
 import PageLayout from '@/components/Layout'
@@ -7,15 +7,17 @@ import styles from './index.css';
 import Link from 'umi/link'
 import {connect} from 'dva'
 import MenuList from '@/utils/menu.js'
-const ContextTemp= React.createContext({});
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
-
 const Index = (props) => {
-  console.log(props,'layout--global')
+  const {dispatch,children,route} = props
   const [openKeys,setOpenKeys] = useState(['0'])
+  
+  useEffect(()=>{
+    
+  },[route])
 
   const onOpenChange = (keys) => {
     const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
@@ -63,7 +65,7 @@ const Index = (props) => {
           </Menu>
         </Sider>
         <Layout style={{ padding: '0 24px 24px' }}>
-          <Breadcrumb MenuList={MenuList}></Breadcrumb>
+          <Breadcrumb route={route}></Breadcrumb>
           <Content
             style={{
               background: '#fff',
@@ -72,14 +74,7 @@ const Index = (props) => {
               minHeight: 'auto',
             }}
           >
-            <ContextTemp.Provider
-              // value={data}
-            >   
-              <PageLayout context={ContextTemp}>
-                {props.children}
-              </PageLayout>
-            </ContextTemp.Provider>
-            
+            {children}
           </Content>
         </Layout>
       </Layout>
@@ -88,9 +83,9 @@ const Index = (props) => {
 }
 
 function mapStateToProps (state) {
+  const {route} = state.global
   return {
-      state,
-      a:1
+    route
   }
 }
 export default connect(mapStateToProps)(Index)

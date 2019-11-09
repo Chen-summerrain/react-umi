@@ -3,7 +3,8 @@ import {Link} from 'umi'
 import {Button} from 'antd'
 import { Item } from 'rc-menu'
 const links = [
-    {name:'动态路由',to:`/route/${1}`},
+    {name:'动态路由id',to:`/route/detail/${1}`},
+    {name:'动态路由edit',to:`/route/edit/${1}`},
 ]
 export default () => (
     <div>

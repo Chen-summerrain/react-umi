@@ -30,6 +30,7 @@ const menuList = [
                     {title:'selfHook',to:'/hook/selfHook'},
                     {title:'useCallback',to:'/hook/useCallback'},
                     {title:'useImperativeHanldle',to:'/hook/useImperativeHandle'},
+                    {title:'useImperativeHanldle1',to:'/hook/useImperativeHandle1'},
                     {title:'useMemo',to:'/hook/useMemo'},
                 ]
             },
@@ -37,7 +38,8 @@ const menuList = [
                 title: 'route',
                 to:'/route',
                 children:[
-                    {title:'动态路由',to:'/route/:id'}
+                    {title:'动态路由id',to:'/route/detail/:id'},
+                    {title:'动态路由edit',to:'/route/edit/:edit'},
                 ]
             },
         ]
